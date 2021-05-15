@@ -3,7 +3,14 @@ const authorization = require("../config/config.js").authorization();
 const https = require("https");
 
 // parse json from response and check for errors
-const parseJsonFromResponse = (apiResponse, res) => {
+const parseJsonFromResponse = (apiResponse, res, next) => {
+  if (apiResponse.statusCode !== 200) {
+    return next({
+      status: apiResponse.statusCode,
+      message: apiResponse.statusMessage,
+    });
+  }
+
   let data = "";
 
   apiResponse.on("data", (chunk) => {
@@ -63,5 +70,21 @@ module.exports = (app) => {
         parseJsonFromResponse(apiResponse, res, next);
       }
     );
+  });
+
+  app.use((_req, _res, next) => {
+    const error = new Error("Not found");
+    error.status = 404;
+    next(error);
+  });
+
+  // error handler middleware
+  app.use((error, _req, res, _next) => {
+    res.status(error.status || 500).send({
+      error: {
+        status: error.status || 500,
+        message: error.message || "Internal Server Error",
+      },
+    });
   });
 };

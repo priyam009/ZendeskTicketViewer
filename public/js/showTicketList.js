@@ -35,6 +35,11 @@ const getPageList = (url) => {
       if (resp) {
         multipleTicketViewGenerator(resp);
         udpatePageButton(resp.meta, resp.tickets[0].id);
+
+        const singleTicket = document.getElementById("single-ticket");
+        const multipleTickets = document.getElementById("multiple-tickets");
+        multipleTickets.style.display = "block";
+        singleTicket.style.display = "none";
       }
     });
 };

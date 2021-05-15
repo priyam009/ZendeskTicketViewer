@@ -15,7 +15,6 @@ const updatePageButton = (cursor, id) => {
   id === 1
     ? (previousPage.style.display = "none")
     : (previousPage.style.display = "block");
-
 };
 
 export default updatePageButton;

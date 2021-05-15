@@ -13,15 +13,32 @@ const showSingleTicket = () => {
     });
 };
 
+//Validate Input Ticket id form for correct value
+const validateForm = (resp) => {
+  document.getElementById("ticket-id-form").reset();
+  if (!resp.ok) {
+    alert("ID doesnot exist. Try Again.");
+    return false;
+  }
+  return true;
+};
+
 //Get Ticket details for ID from API
 const getSingleTicket = (id) => {
   api(`/ticket/${id}`)
     .then((resp) => {
-      return resp.json();
+      if (validateForm(resp)) {
+        return resp.json();
+      }
     })
     .then((res) => {
       if (res) {
         singleTicketViewGenerator(res);
+
+        const singleTicket = document.getElementById("single-ticket");
+        const multipleTickets = document.getElementById("multiple-tickets");
+        multipleTickets.style.display = "none";
+        singleTicket.style.display = "block";
       }
     });
 };

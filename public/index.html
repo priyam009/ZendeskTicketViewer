@@ -10,5 +10,31 @@
   </head>
   <body>
     <h1>Zendesk Ticket Viewer</h1>
+    <div class="display-button">
+      <!-- Button to show all the available listings (Max 25 at a time) -->
+      <button id="show-all-tickets">Show All Tickets</button>
+
+    <!-- Table to show 25 tickets -->
+    <div class="multiple-ticket-container" id="multiple-tickets">
+      <table class="table-container" id="tickets-table">
+        <thead class="multiple-ticket-head" id="tickets-table-head">
+          <tr>
+            <th>Id</th>
+            <th>Subject</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+      </table>
+
+      <!-- Change page buttons -->
+      <div class="page-button" id="page-button">
+        <button id="previous-page">Previous</button>
+        <button id="next-page">Next</button>
+      </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>

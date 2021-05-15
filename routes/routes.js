@@ -11,7 +11,7 @@ const parseJsonFromResponse = (apiResponse, res) => {
   });
 
   apiResponse.on("end", () => {
-    console.log(JSON.parse(data));
+    res.json(JSON.parse(data));
   });
 };
 

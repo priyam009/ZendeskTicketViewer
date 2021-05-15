@@ -14,6 +14,32 @@
       <!-- Button to show all the available listings (Max 25 at a time) -->
       <button id="show-all-tickets">Show All Tickets</button>
 
+      <!-- Form to enter Ticket ID -->
+      <form id="ticket-id-form">
+        <label for="ticket-id">Show Single Ticket: </label>
+        <input
+          type="number"
+          id="ticket-id-input"
+          placeholder="Enter Ticket ID"
+          min="1"
+          required
+        />
+        <button id="ticket-id-submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Table to show single ticket by ID -->
+    <div class="single-ticket-container" id="single-ticket">
+      <div>Id: <span id="ticket-id"></span></div>
+      <div>Subject: <span id="ticket-subject"></span></div>
+      <div>Description: <span id="ticket-description"></span></div>
+      <div>Created At: <span id="ticket-createdAt"></span></div>
+      <div>Updated At: <span id="ticket-updatedAt"></span></div>
+      <div>Status: <span id="ticket-status"></span></div>
+      <div>Requester Id: <span id="ticket-requesterId"></span></div>
+      <div>Assignee Id: <span id="ticket-assigneeId"></span></div>
+    </div>
+
     <!-- Table to show 25 tickets -->
     <div class="multiple-ticket-container" id="multiple-tickets">
       <table class="table-container" id="tickets-table">

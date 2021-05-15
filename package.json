@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --expose-internals"
+    "test": "NODE_ENV=test mocha --expose-internals"
   },
   "author": "priyam",
   "license": "MIT",
